@@ -1,25 +1,28 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
-import { routes } from './pages.routes';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
-import { TestOneModule } from './test-one/test-one.module';
+import { TestOneComponent } from './test-one.component';
 
 @NgModule({
   imports: [
-    FormsModule,
+    CommonModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    Ng2SmartTableModule,
-    SharedModule,
 
-    TestOneModule,
+    Ng2SmartTableModule,
+
+    SharedModule,
+  ],
+  entryComponents: [
+  ],
+  declarations: [
+    TestOneComponent,
   ],
 })
-export class PagesModule {
-}
+export class TestOneModule { }

@@ -1,9 +1,15 @@
 import { Routes } from '@angular/router';
 
+import { TestOneComponent } from './test-one/test-one.component';
+
 export const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+  },
+  {
+    path: 'test-one',
+    component: TestOneComponent,
   },
   {
     path: 'demo',
