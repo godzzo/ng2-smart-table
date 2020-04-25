@@ -1,6 +1,6 @@
+import { OwnDataSource } from './own-data-source';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ServerDataSource } from 'ng2-smart-table';
 
 @Component({
   selector: 'app-test-one',
@@ -10,6 +10,8 @@ import { ServerDataSource } from 'ng2-smart-table';
 export class TestOneComponent {
 
   settings = {
+    mode: 'external',
+    hideSubHeader: false,
     columns: {
       id: {
         title: 'ID',
@@ -26,9 +28,19 @@ export class TestOneComponent {
     },
   };
 
-  source: ServerDataSource;
+  source: OwnDataSource;
 
   constructor(http: HttpClient) {
-    this.source = new ServerDataSource(http, { endPoint: 'https://jsonplaceholder.typicode.com/photos' });
+    this.source = new OwnDataSource(http, {
+      endPoint: 'https://jsonplaceholder.typicode.com/photos'
+    });
+  }
+
+  onCreate($event) {
+    console.log('onCreate', $event);
+  }
+
+  onEdit($event) {
+    console.log('onEdit', $event);
   }
 }
