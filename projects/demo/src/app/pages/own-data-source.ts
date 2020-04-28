@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { LocalDataSource } from './../../../../../ng2-smart-table/src/lib/lib/data-source/local/local.data-source';
-import { ServerSourceConf } from './../../../../../ng2-smart-table/src/lib/lib/data-source/server/server-source.conf';
-import { getDeepFromObject } from './../../../../../ng2-smart-table/src/lib/lib/helpers';
+import { LocalDataSource } from '../../../../ng2-smart-table/src/lib/lib/data-source/local/local.data-source';
+import { ServerSourceConf } from '../../../../ng2-smart-table/src/lib/lib/data-source/server/server-source.conf';
+import { getDeepFromObject } from '../../../../ng2-smart-table/src/lib/lib/helpers';
 
 import { map } from 'rxjs/operators';
 
@@ -61,16 +61,20 @@ export class OwnDataSource extends LocalDataSource {
    * @returns {any}
    */
   protected extractTotalFromResponse(res: any): number {
+    console.log('extractTotalFromResponse', res);
+
     if (res.headers.has(this.conf.totalKey)) {
       return +res.headers.get(this.conf.totalKey);
     } else {
       const rawData = res.body;
+
       return getDeepFromObject(rawData, this.conf.totalKey, 0);
     }
   }
 
   protected requestElements(): Observable<any> {
     let httpParams = this.createRequesParams();
+
     return this.http.get(this.conf.endPoint, { params: httpParams, observe: 'response' });
   }
 
@@ -79,7 +83,11 @@ export class OwnDataSource extends LocalDataSource {
 
     httpParams = this.addSortRequestParams(httpParams);
     httpParams = this.addFilterRequestParams(httpParams);
-    return this.addPagerRequestParams(httpParams);
+    httpParams = this.addPagerRequestParams(httpParams);
+
+    console.log('createRequesParams', httpParams);
+
+    return httpParams;
   }
 
   protected addSortRequestParams(httpParams: HttpParams): HttpParams {
@@ -89,6 +97,8 @@ export class OwnDataSource extends LocalDataSource {
         httpParams = httpParams.set(this.conf.sortDirKey, fieldConf.direction.toUpperCase());
       });
     }
+
+    console.log('addSortRequestParams', httpParams);
 
     return httpParams;
   }
@@ -103,6 +113,8 @@ export class OwnDataSource extends LocalDataSource {
       });
     }
 
+    console.log('addFilterRequestParams', httpParams);
+
     return httpParams;
   }
 
@@ -112,6 +124,8 @@ export class OwnDataSource extends LocalDataSource {
       httpParams = httpParams.set(this.conf.pagerPageKey, this.pagingConf['page']);
       httpParams = httpParams.set(this.conf.pagerLimitKey, this.pagingConf['perPage']);
     }
+
+    console.log('addPagerRequestParams', httpParams);
 
     return httpParams;
   }

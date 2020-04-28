@@ -8,6 +8,7 @@ import { routes } from './pages.routes';
 import { SharedModule } from '../shared/shared.module';
 
 import { TestOneModule } from './test-one/test-one.module';
+import { TestTwoComponent } from './test-two/test-two.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,9 @@ import { TestOneModule } from './test-one/test-one.module';
     SharedModule,
 
     TestOneModule,
+  ],
+  declarations: [
+    TestTwoComponent
   ],
 })
 export class PagesModule {

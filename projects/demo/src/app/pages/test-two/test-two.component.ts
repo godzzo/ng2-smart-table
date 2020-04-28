@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-test-one',
-  styleUrls: ['./test-one.component.scss'],
-  templateUrl: 'test-one.component.html',
+  selector: 'app-test-two',
+  templateUrl: './test-two.component.html',
+  styleUrls: ['./test-two.component.scss']
 })
-export class TestOneComponent {
+export class TestTwoComponent {
 
   settings = {
     mode: 'external',
