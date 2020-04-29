@@ -1,4 +1,4 @@
-import { OwnDataSource } from '../own-data-source';
+import { ServerDataSource } from 'ng2-smart-table';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -28,10 +28,10 @@ export class TestOneComponent {
     },
   };
 
-  source: OwnDataSource;
+  source: ServerDataSource;
 
   constructor(http: HttpClient) {
-    this.source = new OwnDataSource(http, {
+    this.source = new ServerDataSource(http, {
       endPoint: 'https://jsonplaceholder.typicode.com/photos'
     });
   }

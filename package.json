@@ -3,7 +3,7 @@
   "version": "1.6.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build:demo": "ng build demo --aot --prod",
     "build:lib": "ng build ng2-smart-table --prod",
     "build:ci": "npm run build:demo && npm run build:lib",

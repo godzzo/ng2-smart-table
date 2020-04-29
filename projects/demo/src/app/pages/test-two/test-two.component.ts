@@ -32,7 +32,7 @@ export class TestTwoComponent {
 
   constructor(http: HttpClient) {
     this.source = new OwnDataSource(http, {
-      endPoint: 'https://jsonplaceholder.typicode.com/photos'
+      endPoint: '/api/issues'
     });
   }
 
