@@ -124,7 +124,9 @@ export class OwnDataSource extends LocalDataSource {
   protected addPagerRequestParams(httpParams: HttpParams): HttpParams {
 
     if (this.pagingConf && this.pagingConf['page'] && this.pagingConf['perPage']) {
-      httpParams = httpParams.set(this.conf.pagerPageKey, this.pagingConf['page']);
+      const page = this.pagingConf['page'] as number - 1;
+
+      httpParams = httpParams.set(this.conf.pagerPageKey, '' + page);
       httpParams = httpParams.set(this.conf.pagerLimitKey, this.pagingConf['perPage']);
     }
 
