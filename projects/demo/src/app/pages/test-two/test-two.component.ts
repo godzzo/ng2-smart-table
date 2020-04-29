@@ -13,19 +13,16 @@ export class TestTwoComponent {
     mode: 'external',
     hideSubHeader: false,
     columns: {
-      id: {
-        title: 'ID',
-      },
-      albumId: {
-        title: 'Album',
-      },
-      title: {
-        title: 'Title',
-      },
-      url: {
-        title: 'Url',
-      },
-    },
+      id: {title: 'ID'},
+      reqPlace: {title: 'req_place'},
+      reqType: {title: 'req_type'},
+      publicateDate: {title: 'publicate_date'},
+      isExpire: {title: 'is_expire'},
+      expireDate: {title: 'expire_date'},
+      title: {title: 'title'},
+      subTitle: {title: 'sub_title'},
+      lead: {title: 'lead'}
+    }
   };
 
   source: OwnDataSource;

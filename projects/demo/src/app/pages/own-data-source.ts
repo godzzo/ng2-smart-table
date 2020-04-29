@@ -44,7 +44,10 @@ export class OwnDataSource extends LocalDataSource {
    */
   protected extractDataFromResponse(res: any): Array<any> {
     const rawData = res.body;
-    const data = !!this.conf.dataKey ? getDeepFromObject(rawData, this.conf.dataKey, []) : rawData;
+
+    console.log('raw', rawData);
+
+    const data = rawData._embedded.issues;
 
     if (data instanceof Array) {
       return data;
