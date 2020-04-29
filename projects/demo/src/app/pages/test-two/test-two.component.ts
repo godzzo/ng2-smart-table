@@ -30,12 +30,13 @@ export class TestTwoComponent {
   constructor(http: HttpClient) {
     // page=${page}&size=${take}&sort=${order},${orderDirection}
     this.source = new OwnDataSource(http, {
-      endPoint: '/api/issues',
+      endPoint: '/api/issues/filterIssues',
       sortFieldKey: 'sort',
       sortDirKey: 'ADD_AFTER_SORT',
       pagerPageKey: 'page',
       pagerLimitKey: 'size',
-      filterFieldKey: 'filter',
+      filterFieldKey: '#field#_like', // fullText_like
+
       totalKey: 'page.totalElements',
       dataKey: '_embedded.issues'
     });
