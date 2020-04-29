@@ -32,7 +32,7 @@ export class TestTwoComponent {
     this.source = new OwnDataSource(http, {
       endPoint: '/api/issues',
       sortFieldKey: 'sort',
-      sortDirKey: 'sortDir',
+      sortDirKey: 'ADD_AFTER_SORT',
       pagerPageKey: 'page',
       pagerLimitKey: 'size',
       filterFieldKey: 'filter',

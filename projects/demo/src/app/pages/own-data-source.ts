@@ -98,8 +98,12 @@ export class OwnDataSource extends LocalDataSource {
   protected addSortRequestParams(httpParams: HttpParams): HttpParams {
     if (this.sortConf) {
       this.sortConf.forEach((fieldConf) => {
-        httpParams = httpParams.set(this.conf.sortFieldKey, fieldConf.field);
-        httpParams = httpParams.set(this.conf.sortDirKey, fieldConf.direction.toUpperCase());
+        if (this.conf.sortDirKey === 'ADD_AFTER_SORT') {
+          httpParams = httpParams.set(this.conf.sortFieldKey, `${fieldConf.field},${fieldConf.direction.toUpperCase()}`);
+        } else {
+          httpParams = httpParams.set(this.conf.sortFieldKey, fieldConf.field);
+          httpParams = httpParams.set(this.conf.sortDirKey, fieldConf.direction.toUpperCase());
+        }
       });
     }
 
