@@ -21,7 +21,7 @@ export class TestTwoComponent {
       expireDate: {title: 'expire_date'},
       title: {title: 'title'},
       subTitle: {title: 'sub_title'},
-      lead: {title: 'lead'}
+      // lead: {title: 'lead'}
     }
   };
 

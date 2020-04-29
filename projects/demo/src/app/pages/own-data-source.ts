@@ -47,7 +47,9 @@ export class OwnDataSource extends LocalDataSource {
 
     console.log('raw', rawData);
 
-    const data = rawData._embedded.issues;
+    // const data = rawData._embedded.issues;
+
+    const data = getDeepFromObject(rawData, this.conf.dataKey, 0);
 
     if (data instanceof Array) {
       return data;
