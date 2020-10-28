@@ -1,3 +1,5 @@
+import { TestFourthComponent } from './test-fourth/test-fourth.component';
+import { TestThreeComponent } from './test-three/test-three.component';
 import { Routes } from '@angular/router';
 
 import { TestOneComponent } from './test-one/test-one.component';
@@ -15,6 +17,14 @@ export const routes: Routes = [
   {
     path: 'test-two',
     component: TestTwoComponent,
+  },
+  {
+    path: 'test-three',
+    component: TestThreeComponent,
+  },
+  {
+    path: 'test-fourth',
+    component: TestFourthComponent,
   },
   {
     path: 'demo',

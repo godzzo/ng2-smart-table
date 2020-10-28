@@ -15,6 +15,7 @@ export const routes: Routes = [
       {
         path: '',
         redirectTo: 'using-filters',
+        pathMatch: 'full',
       },
       {
         path: 'using-filters',

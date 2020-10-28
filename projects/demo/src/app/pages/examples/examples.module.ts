@@ -71,5 +71,11 @@ const EXAMPLES_COMPONENTS = [
     ExamplesComponent,
     ...EXAMPLES_COMPONENTS,
   ],
+  exports: [
+    AdvancedExampleFiltersComponent,
+    CustomEditorComponent,
+    CustomRenderComponent,
+    CustomFilterComponent,
+  ]
 })
 export class ExamplesModule { }
