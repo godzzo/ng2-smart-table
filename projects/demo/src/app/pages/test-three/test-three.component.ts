@@ -105,9 +105,10 @@ export class TestThreeComponent {
         type: 'custom',
         component: RemoteCompleterFilterComponent,
         config: {
-          url: 'https://raw.githubusercontent.com/oferh/ng2-completer/master/demo/res/data/countries.json',
-          searchField: 'name',
+          url: 'http://localhost:8080/api/lpUsers/filterLpUsers',
+          lookupField: 'name_like',
           titleField: 'name',
+          resultPath: '_embedded.lpUsers'
         },
       },
     };

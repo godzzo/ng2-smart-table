@@ -14,7 +14,7 @@ import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
                    [minSearchLength]="column.getFilterConfig().minSearchLength || 0"
                    [pause]="column.getFilterConfig().pause || 0"
                    [placeholder]="column.getFilterConfig().placeholder || 'Start typing...'"
-                   (selected)="completerContent.next($event)">
+                   (selected)="onSelect($event)">
     </ng2-completer>
   `,
 })
@@ -26,22 +26,28 @@ export class RemoteCompleterFilterComponent  extends DefaultFilter implements On
     super();
   }
 
+  onSelect(item) {
+    console.log('onSelect', item);
+
+    this.completerContent.next(item);
+  }
+
   ngOnInit() {
     const config = this.column.getFilterConfig();
 
-    // config.dataService = this.completerService.local(config.data, config.searchFields, config.titleField);
-
     config.dataService = this.completerService.remote(
       config.url,
-      config.searchField,
+      null, // For local filtering - NOT NEEDED!!!
       config.titleField
     );
 
     config.dataService.urlFormater((term: any) => {
-      return `${config.url}?${config.searchField}=${term}`;
+      return `${config.url}?${config.lookupField}=${term}`;
     });
 
-    config.dataService.descriptionField(config.descriptionField);
+    // config.dataService.descriptionField(config.descriptionField); // Maybe for details on popup list
+
+    config.dataService.dataField(config.resultPath); // Extract the Result Array
 
     this.changesSubscription = this.completerContent
       .pipe(
@@ -50,6 +56,8 @@ export class RemoteCompleterFilterComponent  extends DefaultFilter implements On
         debounceTime(this.delay)
       )
       .subscribe((search: string) => {
+        console.log('completerContent', search);
+
         this.query = search;
         this.setFilter();
       });
