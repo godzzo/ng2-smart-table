@@ -1,3 +1,5 @@
+import { RemoteCompleterFilterComponent } from './remote-completer-filter.component';
+import { DummyExampleColumnFilterComponent } from './dummy-example-column-filter.component';
 import { Component } from '@angular/core';
 
 @Component({
@@ -65,33 +67,6 @@ export class TestThreeComponent {
       id: {
         title: 'ID',
       },
-      name: {
-        title: 'Full Name',
-        filter: {
-          type: 'list',
-          config: {
-            selectText: 'Select...',
-            list: [
-              { value: 'Glenna Reichert', title: 'Glenna Reichert' },
-              { value: 'Kurtis Weissnat', title: 'Kurtis Weissnat' },
-              { value: 'Chelsey Dietrich', title: 'Chelsey Dietrich' },
-            ],
-          },
-        },
-      },
-      email: {
-        title: 'Email',
-        filter: {
-          type: 'completer',
-          config: {
-            completer: {
-              data: this.data,
-              searchFields: 'email',
-              titleField: 'email',
-            },
-          },
-        },
-      },
       passed: {
         title: 'Passed',
         filter: {
@@ -105,4 +80,64 @@ export class TestThreeComponent {
       },
     },
   };
+
+  constructor() {
+
+    this.settings.columns['name'] = {
+      title: 'Full Name',
+      filter: {
+        type: 'custom',
+        component: DummyExampleColumnFilterComponent,
+        config: {
+          selectText: 'Select...',
+          list: [
+            { value: 'Glenna Reichert', title: 'Glenna Reichert' },
+            { value: 'Kurtis Weissnat', title: 'Kurtis Weissnat' },
+            { value: 'Chelsey Dietrich', title: 'Chelsey Dietrich' },
+          ],
+        },
+      },
+    };
+
+    this.settings.columns['name'] = {
+      title: 'Full Name',
+      filter: {
+        type: 'custom',
+        component: RemoteCompleterFilterComponent,
+        config: {
+          data: this.data,
+          searchFields: 'name',
+          titleField: 'name',
+        },
+      },
+    };
+    /*
+    this.settings.columns['name'] = {
+      title: 'Full Name',
+      filter: {
+        type: 'completer',
+        config: {
+          completer: {
+            data: this.data,
+            searchFields: 'name',
+            titleField: 'name',
+          },
+        },
+      },
+    };*/
+
+    this.settings.columns['email'] = {
+      title: 'Email',
+      filter: {
+        type: 'completer',
+        config: {
+          completer: {
+            data: this.data,
+            searchFields: 'email',
+            titleField: 'email',
+          },
+        },
+      },
+    };
+  }
 }
