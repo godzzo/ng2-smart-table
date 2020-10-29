@@ -29,7 +29,18 @@ export class RemoteCompleterFilterComponent  extends DefaultFilter implements On
   ngOnInit() {
     const config = this.column.getFilterConfig();
 
-    config.dataService = this.completerService.local(config.data, config.searchFields, config.titleField);
+    // config.dataService = this.completerService.local(config.data, config.searchFields, config.titleField);
+
+    config.dataService = this.completerService.remote(
+      config.url,
+      config.searchField,
+      config.titleField
+    );
+
+    config.dataService.urlFormater((term: any) => {
+      return `${config.url}?${config.searchField}=${term}`;
+    });
+
     config.dataService.descriptionField(config.descriptionField);
 
     this.changesSubscription = this.completerContent

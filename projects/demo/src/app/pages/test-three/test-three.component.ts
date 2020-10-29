@@ -105,8 +105,8 @@ export class TestThreeComponent {
         type: 'custom',
         component: RemoteCompleterFilterComponent,
         config: {
-          data: this.data,
-          searchFields: 'name',
+          url: 'https://raw.githubusercontent.com/oferh/ng2-completer/master/demo/res/data/countries.json',
+          searchField: 'name',
           titleField: 'name',
         },
       },
