@@ -1,6 +1,6 @@
 import { DummyExampleColumnFilterComponent } from './test-three/dummy-example-column-filter.component';
 import { RemoteCompleterFilterComponent } from './test-three/remote-completer-filter.component';
-import { Ng2CompleterModule } from '@akveo/ng2-completer';
+import { Ng2CompleterModule } from 'ng2-completer';
 import { ExamplesModule } from './examples/examples.module';
 import { CustomFilterComponent } from './../../../../ng2-smart-table/src/lib/components/filter/custom-filter.component';
 import { CustomRenderComponent } from './examples/custom-edit-view/custom-render.component';

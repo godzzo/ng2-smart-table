@@ -1,7 +1,7 @@
 import { DefaultFilter } from 'ng2-smart-table';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Subject } from 'rxjs';
-import { CompleterService } from '@akveo/ng2-completer';
+import { CompleterService } from 'ng2-completer';
 
 import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 
